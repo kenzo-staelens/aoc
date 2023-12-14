@@ -12,6 +12,8 @@ def mirror_h(lines):
     return tuple(line[::-1] for line in lines)
 
 def calc_part_1_line(line,length):
+    #if you see a comment below about why this doesn't work as expected;
+    # this thing calculates assuming you roll north
     sum = 0
     rock_at=length
     for i,item in enumerate(line):
