@@ -21,7 +21,8 @@ def print_data(d):
         s += str(item[1])*item[0] if item[1]!=-1 else '.'*item[0]
     print(s)
 
-
+import time
+start = time.time()
 end = len(data)-1
 while end>-1:
     if data[end][1]==-1:
@@ -45,3 +46,4 @@ res = []
 for item in data:
     res += [item[1]]*item[0] if item[1]!=-1 else [0]*item[0]
 print(sum(res[i]*i for i in range(len(res))))
+print(time.time()-start)
