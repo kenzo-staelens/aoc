@@ -1,6 +1,7 @@
 import functools
 import collections
-
+import time
+start = time.time()
 with open("input.txt","r") as f:
     stones = [int(x) for x in f.read().strip().split()]
 
@@ -18,7 +19,9 @@ def apply_rule(stone):
     return [stone*2024]
 
 newstones = {}
-for i  in range(75):
+for i  in range(49000):
+    if not i%1000:
+        print(f"iter {i}")
     for stone, c in stones.items():
         res = apply_rule(stone)
         for s in res:
@@ -27,6 +30,10 @@ for i  in range(75):
     newstones = {}
     if i==24:
         pt1 = sum(stones.values())
+    if i == 24705:
+        print(time.time()-start)
+print(time.time()-start)
 pt2 = sum(stones.values())
+
 print(f"{pt1=}")
 print(f"{pt2=}")
