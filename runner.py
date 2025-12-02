@@ -4,6 +4,7 @@ import shutil
 import os
 import dotenv
 from itertools import product
+import time
 
 dotenv.load_dotenv('settings')
 YEAR = os.environ.get('YEAR')
@@ -37,5 +38,8 @@ for nl_day, day in with_newlines(days):
         with open(f'{daypath}/part{part}.py', 'r') as f:
             runnable = base_runnable + f.read()
         print(f'{nl_part}  Part: {part}\n    ', end='')
+        start = time.time()
         exec(runnable)
+        end = time.time()
+        print(f'    ran in: {(end-start)*1000}ms')
     os.remove('input.txt')
