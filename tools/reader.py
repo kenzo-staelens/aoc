@@ -3,4 +3,7 @@ def read(strip=False):
         for line in f.readlines():
             if strip and line.strip() == '':
                 continue
-            yield line.strip()
+            if strip:
+                yield line.strip()
+            else:
+                yield line
