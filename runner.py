@@ -13,8 +13,11 @@ DAY = os.environ.get('DAY')
 parser = argparse.ArgumentParser(prog='AoC')
 parser.add_argument('-f', '--file', choices={'input', 'test'}, required=True)
 parser.add_argument('-d', '--day', type=int, required=(not DAY), action="append")
-parser.add_argument('-p', '--part', type=int, choices={1,2}, required=True, action="append")
+parser.add_argument('-p', '--part', type=int, choices={1,2}, action="append")
 args = parser.parse_args()
+
+if not args.part:
+    args.part = [1,2]
 
 def get_base_runnable():
     runnable = ''
